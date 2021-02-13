@@ -18,10 +18,27 @@ const PackageList: React.FC = () => {
   };
 
   return (
-    <form onSubmit={onSearchSubmit}>
-      <input type="text" onChange={handleSearchTermChange} value={searchTerm} />
-      <button type="submit">Search</button>
-    </form>
+    <>
+      <form onSubmit={onSearchSubmit}>
+        <input
+          type="text"
+          onChange={handleSearchTermChange}
+          value={searchTerm}
+        />
+        <button type="submit" disabled={isLoading}>
+          Search
+        </button>
+      </form>
+      {error && <span>{error}</span>}
+      {isLoading && <span>Loading...</span>}
+      {data.length > 0 && (
+        <ul>
+          {data.map((name) => (
+            <li key={name}>{name}</li>
+          ))}
+        </ul>
+      )}
+    </>
   );
 };
 
