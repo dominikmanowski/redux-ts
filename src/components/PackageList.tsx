@@ -1,11 +1,10 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { actionCreators } from "../state";
+import { useActions } from "../hooks/useActions";
 
 const PackageList: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
-  const dispatch = useDispatch();
+  const { searchRepositories } = useActions();
 
   const handleSearchTermChange = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -14,7 +13,7 @@ const PackageList: React.FC = () => {
   const onSearchSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
 
-    dispatch(actionCreators.SearchRepositories(searchTerm));
+    searchRepositories(searchTerm);
   };
 
   return (
