@@ -1,15 +1,10 @@
+import { ActionType } from "../action-types";
 import { Action } from "../actions";
 
 interface RepositoriesState {
   isLoading: boolean;
   error: string | null;
   data: string[];
-}
-
-enum ActionType {
-  SEARCH_REPOSITORIES = "search_repositories",
-  SEARCH_REPOSITORIES_SUCCESS = "search_repositories_success",
-  SEARCH_REPOSITORIES_ERROR = "search_repositories_error",
 }
 
 const reducer = (
